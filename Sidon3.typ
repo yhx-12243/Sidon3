@@ -54,7 +54,7 @@ $
   S({Λ_0, Λ_1, Λ_2})
   = sec(frac(pi, 2n)),
   quad
-  n = frac(max abs(Λ_i - Λ_j), "gcd"(Λ_1 - Λ_0, Λ_2 - Λ_0)).
+  n = frac(max abs(Λ_i - Λ_j), gcd(Λ_1 - Λ_0, Λ_2 - Λ_0)).
 $
 This yields $S({0,1,2}) = √2$ and $S({0,1,3}) = 2 / √3$, but
 ${0,1,2,3}$ is a set of four elements and does not fit this framework. In
@@ -83,7 +83,7 @@ $
 We prove that $P$ is *self-inversive* and that its three roots $z_1, z_2, z_3$
 all lie on the unit circle. From these roots we extract positive real weights
 $
-  μ_j = frac(18, 6 - 2*Re(z_j) + Re(z_j^2)) > 0
+  μ_j = frac(18, 6 - 2 Re(z_j) + Re(z_j^2)) > 0
 $
 satisfying four remarkable moment identities:
 $
@@ -124,7 +124,7 @@ $
   S({Λ_0, Λ_1, Λ_2})
   = sec(frac(pi, 2n)),
 $
-with $n = max abs(Λ_i - Λ_j) / "gcd"(Λ_1 - Λ_0, Λ_2 -
+with $n = max abs(Λ_i - Λ_j) / gcd(Λ_1 - Λ_0, Λ_2 -
 Λ_0)$. In particular, $S({0,1,2}) = √2$ (recovering Newman's
 result) and $S({0,1,3}) = 2/√3$. The extremal polynomials have
 coefficients proportional to the frequency gaps and carry sign patterns
@@ -364,7 +364,7 @@ _Proof_:
   reads $c^*_0 c_i = c^*_(3-i) c_3$ for $i = 0, 1, 2, 3$.
   The key relation is $psi^* ξ = psi$, which follows from
   $ psi^* ξ = frac(ξ^* + 1, 4) ξ = frac(1 + ξ, 4) = psi, $
-  using $abs(ξ) = 1$. The other verifications are straightforward.
+  using $abs(ξ) = 1$.
 
 *Lemma* (Roots of $Q$ lie in the open unit disk).
   Let $Q(X) = P'(X) = 3X^2 - 2 psi X + psi$. Every root $r$ of $Q$ satisfies
@@ -648,8 +648,11 @@ $S({0,1,2,3}) = 5/3$.
 = Formalization
 
 The entire proof of the upper bound (Sections~4.1--4.6) has been formalized
-in Lean~4 using the mathlib library. The formalization consists of five source
-files.
+in Lean~4 using the mathlib library. The source code is available at
+#{
+  let leanUrl = "https://github.com/yhx-12243/Sidon3";
+  link(leanUrl, text(fuchsia, raw(leanUrl)))
+}, consists of six source files.
 
 == Module structure
 
@@ -707,7 +710,7 @@ rather than general complex analysis. The Blaschke estimate is the only place
 where root factorization is needed.
 
 *Compilation.* The project is configured via Lake and depends on `mathlib`.
-It compiles suℂessfully and the proof of the main theorem `Sidon3` can be
+It compiles successfully and the proof of the main theorem `Sidon3` can be
 inspected directly.
 
 = Further Questions
